@@ -47,12 +47,14 @@ class Database(object):
 
         if (added_name, added_surname) not in self.persons.keys():
             self.persons.setdefault((added_name, added_surname), (random.uniform(51.5, 53.95), random.uniform(23.15, 23.95)))
-            print("Add '{}' surname with id [{}] to name dictionary '{}' with id [{}]".format(added_surname, surname_id, added_name, name_id))
+            # print("Add '{}' surname with id [{}] to name dictionary '{}' with id [{}]".format(added_surname, surname_id, added_name, name_id))
             self.people_count += 1
+            return added_name, added_surname, name_id, surname_id, None
         else:
-            print(f"Person with the name '{added_name}' and surname '{added_surname}' already exists in base,"
-                  f" was detained at the coordinates of "
-                  f"{self.persons[(added_name, added_surname)][0]},{self.persons[(added_name, added_surname)][1]}")
+            # print(f"Person with the name '{added_name}' and surname '{added_surname}' already exists in base,"
+            #       f" was detained at the coordinates of "
+            #       f"{self.persons[(added_name, added_surname)][0]},{self.persons[(added_name, added_surname)][1]}")
+            return added_name, added_surname, name_id, surname_id, self.persons[(added_name, added_surname)]
 
         # print("Person dict length: ", len(self.persons))
         # print("Surname dict length:", self.get_name(checked_name).add_person_to_dictionary)

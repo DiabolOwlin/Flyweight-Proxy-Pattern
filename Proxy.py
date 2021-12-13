@@ -14,11 +14,11 @@ class ProxyPerson(Person):
         pass
 
     def check_spelling(self, name, surname):
-        name = name.lower()
-        name = name.capitalize()
+        name = name.lower().replace(' ', '').capitalize()
+        # name = name.capitalize()
 
-        surname = surname.lower()
-        surname = surname.capitalize()
+        surname = surname.lower().replace(' ', '').capitalize()
+        # surname = surname.capitalize()
 
         return name, surname
 
