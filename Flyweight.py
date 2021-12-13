@@ -1,3 +1,5 @@
+from Proxy import *
+
 class Surname(object):
     def __init__(self, surname):
         self.surname = surname
@@ -27,8 +29,10 @@ class Database(object):
     def get_name(self, name):
         return self.names.setdefault(name, NameBranch(name))
 
-    def add_to_the_database(self, surname, name):
-        self.get_name(name).add_person_to_dictionary(PersonFactory.get_person(surname))
+    def add_to_the_database(self, name, surname):
+        tmp = ProxyPerson()
+        checked_name, checked_surname = tmp.check_spelling(name, surname)
+        self.get_name(checked_name).add_person_to_dictionary(PersonFactory.get_person(checked_surname))
         self.people_count += 1
 
 
